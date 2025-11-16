@@ -1,0 +1,193 @@
+/* Navbar.css - styles based on your original design */
+/* Place next to Navbar.jsx and import it (already imported above) */
+
+:root {
+  --primary: #1e40af;
+  --primary-dark: #0f1f52;
+  --foreground: #333333;
+  --background: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --transition: all 0.3s ease;
+}
+
+/* Dark theme overrides (body[data-theme="dark"]) handled globally in your app */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--background);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+/* When scrolled */
+.header.scrolled {
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  padding: 0.5rem 0;
+}
+
+/* Container inside header */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Nav layout */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--foreground);
+}
+.logo img {
+  height: 50px;
+  margin-left: -0.5rem;
+  display: block;
+}
+.logo-text {
+  margin-left: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.logo-text span { color: #ffa000; }
+
+/* Nav links wrapper */
+.nav-links {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  margin-right: -2.5rem;
+}
+
+/* Buttons / Links */
+.nav-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+/* hover effect for nav-btn (subtle) */
+.nav-btn:hover {
+  background: rgba(59,130,246,0.06);
+  transform: translateY(-2px);
+}
+
+/* Login / CTA buttons */
+.login-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.55rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--transition);
+  margin-left: 0.4rem;
+}
+.login-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  color: var(--foreground);
+  font-size: 1.1rem;
+  transition: var(--transition);
+  margin-left: 0.6rem;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--foreground);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+/* Responsive behaviors */
+@media (max-width: 1024px) {
+  .nav-links { margin-right: 0; gap: 0.25rem; }
+  .logo img { margin-left: 0; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav {
+    align-items: center;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--background);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 999;
+    gap: 0.8rem;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .login-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Accessibility focus states */
+a:focus, button:focus {
+  outline: 3px solid rgba(59,130,246,0.25);
+  outline-offset: 2px;
+}
+
+/* Small visual adjustments */
+.header .logo-text { line-height: 1; }
